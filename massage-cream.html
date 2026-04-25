@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Massage Cream – Snake River Skincare</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+<header>
+    <h1>Snake River Skincare</h1>
+    <nav>
+       <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="order.html">Order</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<main>
+
+    <section class="hero-box">
+        <div class="pro1hero">
+
+            <div>
+                <img src="Release main image.png"
+                     alt="Massage Cream jar"
+                     class="product-main-image"
+                     id="mainProductImage">
+
+                <div class="thumbnail-row">
+                    <img src="Release main image.png"
+                         alt="Massage Cream front"
+                         onclick="changeImage(this.src)">
+
+                    <img src="Screen Shot 2025-05-15 at 8.01.17 PM.png"
+                         alt="Massage Cream side view"
+                         onclick="changeImage(this.src)">
+
+                    <img src="Screen Shot 2025-05-15 at 8.28.32 PM.png"
+                         alt="Massage Cream texture"
+                         onclick="changeImage(this.src)">
+                </div>
+            </div>
+
+            <div class="pro1title">
+                <h2>Massage Cream</h2>
+                <p class="price">$16.99 – $21.99</p>
+
+                <p class="pro1details">
+                    A thick, professional-grade massage cream designed for smooth,
+                    controlled glide without greasiness. Ideal for home use or
+                    physical therapy settings. It absorbs cleanly with no alcohol
+                    needed for removal.
+                </p>
+
+                <div class="product-options">
+                    <div class="option-box">
+                        <h4>Available Sizes</h4>
+                        <span>4 oz ($16.99)</span>
+                        <span>8 oz ($21.99)</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- HOW TO USE -->
+    <section class="how-to-use">
+        <h3>How to Use</h3>
+        <p>
+            Apply a generous amount to desired areas and massage into the skin
+            using slow, even strokes. Reapply as needed during extended massage
+            sessions. Suitable for daily use.
+        </p>
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2025 Snake River Skincare. All rights reserved.</p>
+</footer>
+
+<script>
+function changeImage(src) {
+    document.getElementById("mainProductImage").src = src;
+}
+</script>
+
+</body>
+</html>

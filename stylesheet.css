@@ -1,0 +1,251 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #e4dfd5;
+    color: #222;
+    line-height: 1.6;
+}
+
+main {
+    max-width: 1100px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+}
+
+header {
+    background-color: #1f2c38;
+    color: white;
+    padding: 1.5rem 2rem;
+}
+
+header h1 {
+    margin-bottom: 0.5rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 1.5rem;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.hero-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.hero-logo-left-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-logo-left {
+    width: 220px;
+    height: auto;
+}
+
+.hero-box {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.bio {
+    max-width: 420px;
+}
+
+.bio p {
+    margin-bottom: 1rem;
+}
+
+.profile-pic-right {
+    width: 180px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 50% / 60%;
+    border: 4px solid #adb9a1;
+}
+
+
+.products {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.product {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
+.product img {
+    width: 120px;
+    border-radius: 8px;
+}
+
+.product-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.product-link:hover .product {
+    transform: scale(1.02);
+    transition: transform 0.2s ease;
+}
+
+
+.pro1hero {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+
+.product-main-image {
+    width: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+
+.thumbnail-row {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.thumbnail-row img {
+    width: 90px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+
+.pro1title {
+    max-width: 420px;
+}
+
+.pro1title h2 {
+    font-size: 2.8rem;
+    margin-bottom: 0.4rem;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f2933;
+    margin-bottom: 1rem;
+}
+
+.pro1details {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+
+.product-options {
+    margin: 1.5rem 0;
+}
+
+.option-box {
+    background-color: #f7f5f1;
+    padding: 1rem 1.25rem;
+    border-radius: 14px;
+    margin-bottom: 1rem;
+}
+
+.option-box h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    color: #1f2c38;
+}
+
+.option-box span {
+    display: inline-block;
+    background-color: white;
+    padding: 0.35rem 0.8rem;
+    margin: 0.3rem 0.4rem 0 0;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    border: 1px solid #ddd;
+}
+
+.mix-note {
+    font-size: 0.95rem;
+    color: #555;
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+
+.how-to-use {
+    max-width: 1000px;
+    margin: 2rem auto;
+    background-color: white;
+    padding: 1.75rem 2rem;
+    border-radius: 14px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.how-to-use h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.how-to-use p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    color: #444;
+}
+.order-button {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.75rem;
+    background-color: #1f2c38;
+    color: white;
+    text-decoration: none;
+    border-radius: 999px;
+    font-weight: bold;
+}
+
+.order-button:hover {
+    opacity: 0.9;
+}
+
