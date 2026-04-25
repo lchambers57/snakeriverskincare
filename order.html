@@ -81,6 +81,26 @@
           <td class="subtotal">$10.00</td>
         </tr>
 <tr>
+     <tr>
+          <td>Face Cream</td>
+          <td>
+            <select class="size" onchange="updateRow(this)">
+              <option value="15.99">4 oz ($15.99)</option>
+              <option value="24.99">8 oz ($24.99)</option>
+            </select>
+          </td>
+          <td>
+            <select>
+              <option>Unscented</option>
+            </select>
+          </td>
+          <td>
+            <input type="number" value="0" min="0" onchange="updateRow(this)">
+          </td>
+          <td class="subtotal">$15.99</td>
+        </tr>
+
+          
           <td>Niacinamide Face Serum</td>
           <td>
             <select class="size" onchange="updateRow(this)">
@@ -96,6 +116,24 @@
             <input type="number" value="0" min="0" onchange="updateRow(this)">
           </td>
           <td class="subtotal">$10.00</td>
+        </tr>
+          
+          <tr>
+          <td>Hyaluronic acid Serum</td>
+          <td>
+            <select class="size" onchange="updateRow(this)">
+              <option value="10">1 oz ($14.99)</option>
+            </select>
+          </td>
+          <td>
+            <select>
+              <option>Unscented</option>
+            </select>
+          </td>
+          <td>
+            <input type="number" value="0" min="0" onchange="updateRow(this)">
+          </td>
+          <td class="subtotal">$14.99</td>
         </tr>
       </tbody>
     </table>
