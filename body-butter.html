@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Body Butter – Snake River Skincare</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+<header>
+    <h1>Snake River Skincare</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="order.html">Order</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<main>
+
+    <section class="hero-box">
+        <div class="pro1hero">
+
+            <div>
+                <img src="1 Oz Lavender.png"
+                     alt="Body Butter jar"
+                     class="product-main-image"
+                     id="mainProductImage">
+
+                <div class="thumbnail-row">
+                    <img src="1 Oz Lavender.png"
+                         alt="Body Butter front"
+                         onclick="changeImage(this.src)">
+
+                    <img src="Fragrance Free.png"
+                         alt="Body Butter fragrance free"
+                         onclick="changeImage(this.src)">
+
+                    <img src="Screen Shot 2025-07-30 at 8.13.31 AM.png"
+                         alt="Body Butter texture"
+                         onclick="changeImage(this.src)">
+
+                    <img src="Screen Shot 2025-07-30 at 8.24.59 AM.png"
+                         alt="Body Butter lifestyle"
+                         onclick="changeImage(this.src)">
+                </div>
+            </div>
+
+            <!-- RIGHT: PRODUCT INFO -->
+            <div class="pro1title">
+                <h2>Body Butter</h2>
+                <p class="price">$14.99 – $19.99</p>
+
+                <p class="pro1details">
+                    A rich, nutrient-dense body butter designed to deeply
+                    moisturize and protect the skin. Ideal for daily use
+                    and especially helpful for dry or sensitive skin.
+                </p>
+
+                <div class="product-options">
+
+                    <div class="option-box">
+                        <h4>Available Sizes</h4>
+                        <span>4 oz ($14.99)</span>
+                        <span>8 oz ($19.99)</span>
+                    </div>
+
+                    <div class="option-box">
+                        <h4>Fragrance Options</h4>
+                        <span>Fragrance Free</span>
+                        <span>Lavender</span>
+                        <span>Cinnamon</span>
+                        <span>Vanilla</span>
+                    </div>
+
+                    <p class="mix-note">
+                        Fragrances can be mixed and matched to suit your personal preference.
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="how-to-use">
+        <h3>How to Use</h3>
+        <p>
+            Apply a small amount to clean, dry skin and massage until fully absorbed.
+            Use daily or as needed, focusing on dry areas such as hands, elbows,
+            legs, and feet.
+        </p>
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2025 Snake River Skincare. All rights reserved.</p>
+</footer>
+
+<script>
+function changeImage(src) {
+    document.getElementById("mainProductImage").src = src;
+}
+</script>
+
+</body>
+</html>
