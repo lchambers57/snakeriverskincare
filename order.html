@@ -225,7 +225,7 @@ function printReceipt() {
     </body>
     </html>
   `;
-
+<button class="order-button" onclick="printReceipt()">Print Receipt</button>
   let printWindow = window.open('', '', 'width=800,height=600');
   printWindow.document.write(receiptHTML);
   printWindow.document.close();
