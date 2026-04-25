@@ -363,3 +363,9 @@ footer {
         font-size: 1.6rem;
     }
 }
+/* Hide everything except receipt when printing main page */
+@media print {
+    header, nav, .venmo-section, .order-button {
+        display: none;
+    }
+}
