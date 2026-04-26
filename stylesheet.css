@@ -369,3 +369,28 @@ footer {
         display: none;
     }
 }
+/* Venmo side-by-side layout */
+.venmo-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.venmo-text {
+    text-align: left;
+    max-width: 250px;
+    font-size: 0.95rem;
+    color: #444;
+}
+@media (max-width: 600px) {
+    .venmo-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .venmo-text {
+        text-align: center;
+    }
+}
