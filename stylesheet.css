@@ -369,24 +369,30 @@ footer {
         display: none;
     }
 }
-/* Venmo side-by-side layout */
+/* FORCE side-by-side layout */
 .venmo-content {
-    display: flex;
+    display: flex !important;
+    flex-direction: row !important;
     align-items: center;
     justify-content: center;
     gap: 2rem;
     margin-top: 1rem;
 }
 
-.venmo-text {
-    text-align: left;
-    max-width: 250px;
-    font-size: 0.95rem;
-    color: #444;
+.venmo-content img {
+    width: 180px;
+    flex-shrink: 0;
 }
+
+.venmo-text {
+    max-width: 260px;
+    text-align: left;
+}
+
+/* Mobile fallback */
 @media (max-width: 600px) {
     .venmo-content {
-        flex-direction: column;
+        flex-direction: column !important;
         text-align: center;
     }
 
