@@ -400,3 +400,6 @@ footer {
         text-align: center;
     }
 }
+.venmo-content {
+    border: 3px solid red;
+}
