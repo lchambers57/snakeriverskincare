@@ -347,7 +347,7 @@ footer {
 /* QR CODE */
 .venmo-content img {
     width: 180px;
-    height: auto;
+    height: 300;
     flex-shrink: 0;
     border-radius: 10px;
 }
