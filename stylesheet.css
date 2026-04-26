@@ -376,19 +376,18 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    margin-top: 1rem;
 }
 
 .venmo-content img {
     width: 180px;
+    height: auto;
     flex-shrink: 0;
 }
 
 .venmo-text {
-    max-width: 260px;
     text-align: left;
+    max-width: 250px;
 }
-
 /* Mobile fallback */
 @media (max-width: 600px) {
     .venmo-content {
