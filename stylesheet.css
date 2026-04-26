@@ -327,65 +327,52 @@ footer {
     background-color: #f7f5f1;
     padding: 1.5rem;
     border-radius: 14px;
+}
+
+/* Title */
+.venmo-section h3 {
+    margin-bottom: 1rem;
+    color: #1f2c38;
     text-align: center;
 }
 
-.venmo-section h3 {
-    margin-bottom: 0.5rem;
-    color: #1f2c38;
-}
-
-.venmo-section p {
-    font-size: 0.95rem;
-    color: #555;
-}
-
-.venmo-section img {
-    margin-top: 1rem;
-    width: 180px;
-    border-radius: 10px;
-}
-
-/* Optional: row hover (subtle premium feel) */
-.order-table tbody tr:hover {
-    background-color: #faf8f4;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-    .order-table th,
-    .order-table td {
-        padding: 0.6rem;
-        font-size: 0.85rem;
-    }
-
-    .order-title {
-        font-size: 1.6rem;
-    }
-}
-/* Hide everything except receipt when printing main page */
-@media print {
-    header, nav, .venmo-section, .order-button {
-        display: none;
-    }
-}
-/* FORCE side-by-side layout */
+/* FLEX CONTAINER */
 .venmo-content {
-    display: flex !important;
-    flex-direction: row !important;
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: 2rem;
 }
 
+/* QR CODE */
 .venmo-content img {
     width: 180px;
     height: auto;
     flex-shrink: 0;
+    border-radius: 10px;
 }
 
+/* TEXT BLOCK */
 .venmo-text {
     text-align: left;
-    max-width: 500px;
+    max-width: 300px;
 }
 
+/* Paragraph styling */
+.venmo-text p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 0.4rem;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .venmo-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .venmo-text {
+        text-align: center;
+    }
+}
