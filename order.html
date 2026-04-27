@@ -139,6 +139,14 @@
       </tbody>
     </table>
 
+<div class="shipping-line" id="shippingLine" style="display: none;">
+  Shipping & Handling: $<span id="shippingAmount">6.20</span>
+</div>
+
+<div class="order-total">
+  Total: $<span id="total">0.00</span>
+</div>
+      
     <div class="order-total">
       Total: $<span id="total">0.00</span>
     </div>
@@ -204,17 +212,35 @@ function updateRow(element) {
 
 function updateTotal() {
   let rows = document.querySelectorAll("#orderTable tbody tr");
-  let total = 0;
+  let subtotalTotal = 0;
+  let hasItems = false;
 
   rows.forEach(row => {
     let subtotalCell = row.querySelector(".subtotal");
-    if (!subtotalCell) return;
+    let quantity = parseInt(row.querySelector("input").value) || 0;
 
-    let value = parseFloat(subtotalCell.innerText.replace("$", "")) || 0;
-    total += value;
+    if (quantity > 0) {
+      hasItems = true;
+    }
+
+    if (subtotalCell) {
+      let value = parseFloat(subtotalCell.innerText.replace("$", "")) || 0;
+      subtotalTotal += value;
+    }
   });
 
-  document.getElementById("total").innerText = total.toFixed(2);
+  let shipping = 0;
+
+  if (hasItems) {
+    shipping = 6.20;
+    document.getElementById("shippingLine").style.display = "block";
+  } else {
+    document.getElementById("shippingLine").style.display = "none";
+  }
+
+  let finalTotal = subtotalTotal + shipping;
+
+  document.getElementById("total").innerText = finalTotal.toFixed(2);
 }
 
 function initializeTable() {
