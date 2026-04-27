@@ -199,6 +199,7 @@
     <p>&copy; 2026 Snake River Skincare. All rights reserved.</p>
 </footer>
 
+
 <script>
 function updateRow(element) {
   let row = element.closest("tr");
@@ -207,7 +208,6 @@ function updateRow(element) {
   let quantity = parseInt(row.querySelector("input").value) || 0;
 
   let subtotal = price * quantity;
-
   row.querySelector(".subtotal").innerText = "$" + subtotal.toFixed(2);
 
   updateTotal();
@@ -222,9 +222,7 @@ function updateTotal() {
     let subtotalCell = row.querySelector(".subtotal");
     let quantity = parseInt(row.querySelector("input").value) || 0;
 
-    if (quantity > 0) {
-      hasItems = true;
-    }
+    if (quantity > 0) hasItems = true;
 
     if (subtotalCell) {
       let value = parseFloat(subtotalCell.innerText.replace("$", "")) || 0;
@@ -232,14 +230,10 @@ function updateTotal() {
     }
   });
 
-  let shipping = 0;
+  let shipping = hasItems ? 6.20 : 0;
 
-  if (hasItems) {
-    shipping = 6.20;
-    document.getElementById("shippingLine").style.display = "block";
-  } else {
-    document.getElementById("shippingLine").style.display = "none";
-  }
+  // Show / hide shipping line
+  document.getElementById("shippingLine").style.display = hasItems ? "block" : "none";
 
   let finalTotal = subtotalTotal + shipping;
 
@@ -253,50 +247,7 @@ function initializeTable() {
   });
 }
 
-<button class="order-button" onclick="printReceipt()">
-  Print Receipt
-</button>
-}
-
-window.onload = initializeTable;
-</script>
-<script>
-function updateRow(element) {
-  let row = element.closest("tr");
-
-  let price = parseFloat(row.querySelector(".size").value) || 0;
-  let quantity = parseInt(row.querySelector("input").value) || 0;
-
-  let subtotal = price * quantity;
-
-  row.querySelector(".subtotal").innerText = "$" + subtotal.toFixed(2);
-
-  updateTotal();
-}
-
-function updateTotal() {
-  let rows = document.querySelectorAll("#orderTable tbody tr");
-  let total = 0;
-
-  rows.forEach(row => {
-    let subtotalCell = row.querySelector(".subtotal");
-    if (!subtotalCell) return;
-
-    let value = parseFloat(subtotalCell.innerText.replace("$", "")) || 0;
-    total += value;
-  });
-
-  document.getElementById("total").innerText = total.toFixed(2);
-}
-
-function initializeTable() {
-  document.querySelectorAll("#orderTable tbody tr").forEach(row => {
-    let input = row.querySelector("input");
-    if (input) updateRow(input);
-  });
-}
-
-/* ✅ PRINT RECEIPT FUNCTION */
+/* PRINT RECEIPT */
 function printReceipt() {
   let rows = document.querySelectorAll("#orderTable tbody tr");
   let receiptRows = "";
@@ -304,13 +255,7 @@ function printReceipt() {
 
   rows.forEach(row => {
     let product = row.children[0].innerText;
-
-    let sizeSelect = row.querySelector(".size");
-    let sizeText = sizeSelect.options[sizeSelect.selectedIndex].text;
-
-    let fragranceSelect = row.children[2].querySelector("select");
-    let fragrance = fragranceSelect.options[fragranceSelect.selectedIndex].text;
-
+    let size = row.querySelector(".size").selectedOptions[0].text;
     let quantity = parseInt(row.querySelector("input").value) || 0;
     let subtotal = row.querySelector(".subtotal").innerText;
 
@@ -320,8 +265,7 @@ function printReceipt() {
       receiptRows += `
         <tr>
           <td>${product}</td>
-          <td>${sizeText}</td>
-          <td>${fragrance}</td>
+          <td>${size}</td>
           <td>${quantity}</td>
           <td>${subtotal}</td>
         </tr>
@@ -330,112 +274,47 @@ function printReceipt() {
   });
 
   if (!hasItems) {
-    alert("Please add at least one item before printing a receipt.");
+    alert("Please add items before printing.");
     return;
   }
 
   let total = document.getElementById("total").innerText;
 
-  let receiptHTML = `
+  let win = window.open("", "", "width=800,height=600");
+  win.document.write(`
     <html>
     <head>
       <title>Receipt</title>
       <style>
-        body {
-          font-family: Arial, sans-serif;
-          padding: 25px;
-          color: #222;
-        }
-
-        h2 {
-          text-align: center;
-          margin-bottom: 10px;
-        }
-
-        p {
-          text-align: center;
-          font-size: 0.9rem;
-          color: #555;
-        }
-
-        table {
-          width: 100%;
-          border-collapse: collapse;
-          margin-top: 20px;
-        }
-
-        th {
-          text-align: left;
-          padding: 10px;
-          border-bottom: 2px solid #ccc;
-          font-size: 0.85rem;
-          text-transform: uppercase;
-          color: #555;
-        }
-
-        td {
-          padding: 10px;
-          border-bottom: 1px solid #eee;
-        }
-
-        .total {
-          text-align: right;
-          margin-top: 20px;
-          font-size: 1.3rem;
-          font-weight: bold;
-        }
-
-        .footer {
-          text-align: center;
-          margin-top: 30px;
-          font-size: 0.85rem;
-          color: #777;
-        }
+        body { font-family: Arial; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        td, th { padding: 8px; border-bottom: 1px solid #ccc; }
+        .total { text-align: right; font-weight: bold; margin-top: 20px; }
       </style>
     </head>
-
     <body>
       <h2>Snake River Skincare</h2>
-      <p>Order Receipt</p>
       <p>${new Date().toLocaleString()}</p>
 
       <table>
-        <thead>
-          <tr>
-            <th>Product</th>
-            <th>Size</th>
-            <th>Fragrance</th>
-            <th>Qty</th>
-            <th>Subtotal</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          ${receiptRows}
-        </tbody>
+        <tr>
+          <th>Product</th>
+          <th>Size</th>
+          <th>Qty</th>
+          <th>Subtotal</th>
+        </tr>
+        ${receiptRows}
       </table>
 
       <div class="total">Total: $${total}</div>
-
-      <div class="footer">
-        Thank you for supporting Snake River Skincare
-      </div>
     </body>
     </html>
-  `;
+  `);
 
-  let printWindow = window.open("", "", "width=800,height=600");
-
-  printWindow.document.write(receiptHTML);
-  printWindow.document.close();
-
-  /* wait for content to load before printing */
-  printWindow.onload = function () {
-    printWindow.print();
-  };
+  win.document.close();
+  win.onload = () => win.print();
 }
 
-/* Initialize table on load */
 window.onload = initializeTable;
 </script>
 </body>
