@@ -376,3 +376,9 @@ footer {
         text-align: center;
     }
 }
+.shipping-line {
+    text-align: right;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #444;
+}
