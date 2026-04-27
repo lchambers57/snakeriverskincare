@@ -210,51 +210,72 @@ updateRow(row.querySelector("input"));
 }
 
 function printReceipt() {
-let rows = document.querySelectorAll("#orderTable tbody tr");
-let html = "";
-let hasItems = false;
+  let rows = document.querySelectorAll("#orderTable tbody tr");
+  let html = "";
+  let hasItems = false;
+  let subtotal = 0;
 
-rows.forEach(row => {
-let qty = parseInt(row.querySelector("input").value) || 0;
-if (qty > 0) {
-hasItems = true;
+  rows.forEach(row => {
+    let qty = parseInt(row.querySelector("input").value) || 0;
 
-html += `
-<tr>
-<td>${row.children[0].innerText}</td>
-<td>${row.querySelector(".size").selectedOptions[0].text}</td>
-<td>${qty}</td>
-<td>${row.querySelector(".subtotal").innerText}</td>
-</tr>
-`;
-}
-});
+    if (qty > 0) {
+      hasItems = true;
 
-if (!hasItems) {
-alert("Add items first.");
-return;
-}
+      let rowSubtotal = parseFloat(
+        row.querySelector(".subtotal").innerText.replace("$", "")
+      ) || 0;
 
-let total = document.getElementById("total").innerText;
+      subtotal += rowSubtotal;
 
-let w = window.open("", "", "width=800,height=600");
-w.document.write(`
-<html>
-<body style="font-family:Arial;padding:20px;">
-<h2>Snake River Skincare</h2>
-<p>${new Date().toLocaleString()}</p>
+      html += `
+        <tr>
+          <td>${row.children[0].innerText}</td>
+          <td>${row.querySelector(".size").selectedOptions[0].text}</td>
+          <td>${qty}</td>
+          <td>$${rowSubtotal.toFixed(2)}</td>
+        </tr>
+      `;
+    }
+  });
 
-<table style="width:100%;border-collapse:collapse;">
-<tr><th>Product</th><th>Size</th><th>Qty</th><th>Subtotal</th></tr>
-${html}
-</table>
+  if (!hasItems) {
+    alert("Add items first.");
+    return;
+  }
 
-<h3 style="text-align:right;">Total: $${total}</h3>
-</body>
-</html>
-`);
-w.document.close();
-w.print();
+  // ✅ SHIPPING LOGIC
+  let shipping = 6.20;
+  let total = subtotal + shipping;
+
+  let w = window.open("", "", "width=800,height=600");
+
+  w.document.write(`
+    <html>
+    <body style="font-family:Arial;padding:20px;">
+      <h2>Snake River Skincare</h2>
+      <p>${new Date().toLocaleString()}</p>
+
+      <table style="width:100%;border-collapse:collapse;margin-top:20px;">
+        <tr>
+          <th>Product</th>
+          <th>Size</th>
+          <th>Qty</th>
+          <th>Subtotal</th>
+        </tr>
+        ${html}
+      </table>
+
+      <div style="margin-top:20px;text-align:right;">
+        <p>Subtotal: $${subtotal.toFixed(2)}</p>
+        <p>Shipping: $${shipping.toFixed(2)}</p>
+        <h3>Total: $${total.toFixed(2)}</h3>
+      </div>
+    </body>
+    </html>
+  `);
+
+  w.document.close();
+  w.onload = () => w.print();
 }
 
 window.onload = initializeTable;
